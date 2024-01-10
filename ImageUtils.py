@@ -1,5 +1,4 @@
 import numpy as np
-import tensorflow as tf
 
 
 def parse_record(record: np.ndarray, training: bool) -> np.ndarray:
@@ -33,15 +32,15 @@ def preprocess_image(image: np.ndarray, training: bool) -> np.ndarray:
         padded_image = np.zeros(
             (image.shape[0] + 8, image.shape[1] + 8, image.shape[2])
         )
-        padded_image[4 : 4 + image.shape[0], 4 : 4 + image.shape[1], :] = image
+        padded_image[4:4 + image.shape[0], 4:4 + image.shape[1], :] = image
         image = padded_image
 
         # Randomly crop a [32, 32] section of the image.
         # image = tf.random_crop(image, [32, 32, 3])
         uppre_lefts = np.random.randint(low=1, high=8, size=2)
         image = image[
-            uppre_lefts[0] : uppre_lefts[0] + 32,
-            uppre_lefts[1] : uppre_lefts[1] + 32,
+            uppre_lefts[0]: uppre_lefts[0] + 32,
+            uppre_lefts[1]: uppre_lefts[1] + 32,
             :,
         ]
 

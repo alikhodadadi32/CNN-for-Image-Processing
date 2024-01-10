@@ -1,39 +1,43 @@
 import numpy as np
 import pickle
 import tarfile
+from typing import Tuple
 
 """This script implements the functions for reading data.
 """
 
 # data_dir="C:/Users/Downloads/cifar-10-python.tar.gz"
 
-def unzip(file):
+
+def unzip(file_path: str) -> tarfile.TarFile:
     """Extracts a tar file.
     Args:
         file_path: A string. The path to the tar file.
     Returns:
         tar: TarFile object after extraction.
     """
-    tar = tarfile.open(file, "r")
+    tar = tarfile.open(file_path, "r")
     tar.extractall()
-    
+
     return tar
 
 
-def unpickle(file):
+def unpickle(file_path: str):
     """Loads a pickle file.
     Args:
         file_path: A string. The path to the pickle file.
     Returns:
         Loaded pickle object.
     """
-    with open(file, "rb") as fo:
+    with open(file_path, "rb") as fo:
         dict = pickle.load(fo, encoding="bytes")
-    
+
     return dict
 
 
-def load_data(data_dir):
+def load_data(data_dir: str) -> Tuple[
+        np.ndarray, np.ndarray, np.ndarray, np.ndarray
+        ]:
     """Load the CIFAR-10 dataset.
     Args:
         data_dir: A string. The directory where data batches
@@ -68,7 +72,7 @@ def load_data(data_dir):
     return x_train, y_train, x_test, y_test
 
 
-def load_testing_images(data_dir):
+def load_testing_images(data_dir: str) -> np.ndarray:
     """Load the images in private testing dataset.
     Args:
         data_dir: A string. The directory where the testing images
@@ -82,7 +86,9 @@ def load_testing_images(data_dir):
     return x_test
 
 
-def train_valid_split(x_train, y_train, train_ratio=0.8):
+def train_valid_split(
+    x_train: np.ndarray, y_train: np.ndarray, train_ratio: float = 0.8
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Split the original training data into a new training dataset
     and a validation dataset.
     Args:
@@ -97,7 +103,7 @@ def train_valid_split(x_train, y_train, train_ratio=0.8):
     """
     x_train_new = x_train[: int(train_ratio * x_train.shape[0])]
     y_train_new = y_train[: int(train_ratio * x_train.shape[0])]
-    x_valid = x_train[int(train_ratio * x_train.shape[0]) :]
-    y_valid = y_train[int(train_ratio * x_train.shape[0]) :]
+    x_valid = x_train[int(train_ratio * x_train.shape[0]):]
+    y_valid = y_train[int(train_ratio * x_train.shape[0]):]
 
     return x_train_new, y_train_new, x_valid, y_valid
