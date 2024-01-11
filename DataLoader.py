@@ -1,7 +1,8 @@
-import numpy as np
 import pickle
 import tarfile
 from typing import Tuple
+
+import numpy as np
 
 """This script implements the functions for reading data.
 """

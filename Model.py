@@ -1,10 +1,12 @@
-from ImageUtils import parse_record
-from Network import MyNetwork
-import numpy as np
 import os
-import tensorflow as tf
 import time
 from typing import List
+
+import numpy as np
+import tensorflow as tf
+
+from Network import MyNetwork
+from ImageUtils import parse_record
 
 """This script defines the training, validation and testing process.
 """
