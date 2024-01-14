@@ -73,8 +73,6 @@ class MyModel(object):
                 self.configs._alpha,
                 self.configs._beta,
                 self.configs._lambda,
-                self.inputs,
-                self.labels,
             )
 
             optimizer = tf.train.MomentumOptimizer(
@@ -147,9 +145,9 @@ class MyModel(object):
                 )
 
                 print(
-                    "Batch {:d}/{:d} Loss {:.6f} \n".format(i, num_batches,
-                                                            loss[0][0]),
-                    end="\r", flush=True,
+                    "Batch {:d}/{:d} Loss {:.6f} \n".format(i, num_batches, loss[0][0]),
+                    end="\r",
+                    flush=True,
                 )
 
             duration = time.time() - start_time
@@ -188,9 +186,7 @@ class MyModel(object):
                 pred = self.sess.run(self.preds, feed_dict=feed_dict)
                 preds.append(pred)
             preds = np.array(preds).reshape(np.shape(y))
-            print("Test accuracy: {:.4f}".format(
-                np.sum(preds == y)/np.shape(y)[0])
-                )
+            print("Test accuracy: {:.4f}".format(np.sum(preds == y) / np.shape(y)[0]))
 
     def save(self, saver: tf.train.Saver, step: int):
         """Save weights."""

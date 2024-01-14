@@ -69,13 +69,13 @@ class MyNetwork:
 
         Args:
             inputs (tf.Tensor): Input tensor to the layer.
-            training (bool): Boolean indicating whether the network is in training mode. 
+            training (bool): Boolean indicating whether the network is in training mode.
 
         Returns:
             tf.Tensor: Output tensor after applying the start layer.
         """
         outputs = tf.layers.BatchNormalization(
-            traofinable=training,
+            trainable=training,
             axis=-1,
             momentum=0.99,
             epsilon=0.001,

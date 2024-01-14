@@ -1,5 +1,4 @@
 # A Combination of ResNet, DenseNet, and GoogleNet for Image Processing
-
 ## Model description 
 
 This project introduces a novel network structure that combines elements of the ResNet, GoogleNet, and DenseNet architectures. It aims to leverage the unique strengths of these networks to improve accuracy and efficiency.
@@ -19,7 +18,6 @@ Projection-Dense: A new projection method for level-wise feature map adjustment.
 
 
 ## Code Structure
-
 ### main.py:
 Includes the code that loads the dataset and performs the training, testing and
 prediction.
@@ -43,17 +41,22 @@ will be imported and referenced in Model.py.
 
 
 ## How to run
+### (1)
+This project uses Poetry for dependency management. To set up the project environment and install dependencies. Poetry utilizes the poetry.lock file (dependecies/poetry.lock) to create a consistent environment. Run the following command to install the dependencies as specified in the lock file:
 
-To reproduce the validation results and test probabilities, following lines of codes needs to be run in the CMD. 
+`poetry install`
 
-To reproduce validation accuracies (public test data): "python main.py --List_residual_layers 5 5 5  --mode test"
-To reproduce test probabilities (private test data)  : "python main.py --List_residual_layers 5 5 5  --mode predict"
+This command will set up a virtual environment and install the necessary packages as defined in pyproject.toml and poetry.lock.
 
-
-*   The List_residual_layers must be specidfied as shown
-**  The Final_model folder and the ".py" files in the "code" folder must be in the same directory to run (you may need to copy the "Final_model" folder into the "code" folder)
+### (2)
+Modify the variables inside the main.py (the network configuration, data location, where to save model checkpoints, etc.) 
 
 
-$ python main.py --List_residual_layers 5 5 5  --mode test
-2024-01-13 01:31:54.575670: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
-2024-01-13 01:31:54.576024: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+### (3)
+Run the following for the desired list of residual layers:
+
+`python main.py --List_residual_layers 5 5 5  --mode train`
+
+Note that the List_residual_layers must be specidfied as shown. To get the performance measures on test data run: 
+
+`python main.py --List_residual_layers 5 5 5  --mode test`

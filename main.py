@@ -28,17 +28,17 @@ parser.add_argument("--start_learning_rate", default=0.001, help="learning rate"
 parser.add_argument("--mode", default="train", help="train, test or predict")
 parser.add_argument(
     "--data_dir",
-    default="C:/Users/akhod/Desktop/CSCE-636/Project/636_Project/data/cifar-10-python.tar.gz",
+    default="./data/cifar-10-python.tar.gz",
     help="path to the data",
 )
 parser.add_argument(
     "--save_dir",
-    default="C:/Users/akhod/Desktop/CSCE-636/Project/636_Project/code",
+    default="/code",
     help="path to save the results",
 )
 parser.add_argument(
     "--test_data_dir",
-    default="C:/Users/akhod/Desktop/CSCE-636/Project/636_Project/data/private_test_images.npy",
+    default="./data/private_test_images.npy",
     help="path to the private test data",
 )
 args = parser.parse_args()

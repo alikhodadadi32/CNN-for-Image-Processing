@@ -36,9 +36,7 @@ def unpickle(file_path: str):
     return dict
 
 
-def load_data(data_dir: str) -> Tuple[
-        np.ndarray, np.ndarray, np.ndarray, np.ndarray
-        ]:
+def load_data(data_dir: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Load the CIFAR-10 dataset.
     Args:
         data_dir: A string. The directory where data batches
@@ -104,7 +102,7 @@ def train_valid_split(
     """
     x_train_new = x_train[: int(train_ratio * x_train.shape[0])]
     y_train_new = y_train[: int(train_ratio * x_train.shape[0])]
-    x_valid = x_train[int(train_ratio * x_train.shape[0]):]
-    y_valid = y_train[int(train_ratio * x_train.shape[0]):]
+    x_valid = x_train[int(train_ratio * x_train.shape[0]) :]
+    y_valid = y_train[int(train_ratio * x_train.shape[0]) :]
 
     return x_train_new, y_train_new, x_valid, y_valid
