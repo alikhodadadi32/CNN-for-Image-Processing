@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dependencies"
+version = "0.1.0"
+description = ""
+authors = ["alikhodadadi32 <a.khodadadi1994@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.7"
+tensorflow= "1.14"
+protobuf="3.20.*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

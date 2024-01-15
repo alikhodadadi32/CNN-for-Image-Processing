@@ -49,10 +49,14 @@ This project uses Poetry for dependency management. To set up the project enviro
 This command will set up a virtual environment and install the necessary packages as defined in pyproject.toml and poetry.lock.
 
 ### (2)
-Modify the variables inside the main.py (the network configuration, data location, where to save model checkpoints, etc.) 
-
+Download sample data (use this link: https://www.cs.toronto.edu/~kriz/cifar.html), create a new folder name 'data' under the project directory.
+The sample dataset, CIFAR-10 dataset, consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images.
+[Put your data in .tar.gz format if you desire to run the model on other datasets] 
 
 ### (3)
+Modify the variables inside the main.py (the network configuration, data location, where to save model checkpoints, etc.) 
+
+### (4)
 Run the following for the desired list of residual layers:
 
 `python main.py --List_residual_layers 5 5 5  --mode train`
